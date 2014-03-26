@@ -11,13 +11,11 @@ jQuery.fn.okTimer = function(year, mounth, day, format) {
   var result = { 
     'd' : 0, 'h' : 0, 'm' : 0, 's' : 0
   };  
-  /* target date */
+
   var targetDate = new Date(year, mounth-1, day);
     
-  /* date now */
   var today = new Date();
     
-  /* total difference in seconds */
   var differense = Math.floor((targetDate - today) / 1000);
   
   timer(differense);
@@ -28,23 +26,19 @@ jQuery.fn.okTimer = function(year, mounth, day, format) {
         var label = "";   
         switch(arFormat[i]) {
            case 'd' :
-              /* difference in days */
               result['d'] = Math.floor(differense / 3600 / 24);            
               label = "days"; 
               break;
            case 'h' :  
               label = "hours";
-              /* difference in hours */
-              result['h'] = Math.floor(differense / 3600) - (result['d'] * 24); 
+              result['h'] = Math.floor(differense / 3600) - (result['d'] * 24);               
               break;
            case 'm' :  
               label = "min";
-              /* difference in minutes */
               result['m'] = Math.floor(differense / 60) - (result['d'] * 24 * 60) - (result['h'] * 60); 
               break;
            case 's' :  
-              label = "sec";
-              /* difference in minutes */
+              label = "sec";              
               result['s'] = Math.floor(differense) - (result['d'] * 24 * 60 * 60) - (result['h'] * 60 * 60) - (result['m'] * 60); 
               break;
         }     
